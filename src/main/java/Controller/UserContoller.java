@@ -12,11 +12,11 @@ public class UserContoller {
     UserServiceImpl userService;
 
     @GetMapping("GetUser/{id}")
-    public User getUser(@PathVariable int  id) {
+    public User getUser(@PathVariable("id") int  id) {
         return userService.getUser(id);
     }
     @GetMapping("GetUser/{criteria}")
-    public User getUser(@PathVariable String criteria) {
+    public User getUser(@PathVariable("criteria") String criteria) {
         return userService.getUser(criteria);
     }
 
@@ -26,11 +26,11 @@ public class UserContoller {
     }
 
     @DeleteMapping("DeleteUser/{id}")
-    public  void deleteUser(@PathVariable int id) {
+    public  void deleteUser(@PathVariable("id") int id) {
         userService.deleteUser(id);
     }
     @DeleteMapping("DeleteUser/{criteria}")
-    public  void deleteUser(@PathVariable String  criteria) {
+    public  void deleteUser(@PathVariable("criteria") String  criteria) {
         userService.deleteUser(criteria);
     }
 }
