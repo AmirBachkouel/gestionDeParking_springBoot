@@ -1,7 +1,7 @@
 package Controller;
 
 import Entity.User;
-import Service.Implementation.UserServiceImpl;
+import Service.Interface.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/users/")
 public class UserContoller {
     @Autowired
-    UserServiceImpl userService;
+    IUserService userService;
 
     @GetMapping("GetUser/{id}")
     public User getUser(@PathVariable("id") int  id) {
