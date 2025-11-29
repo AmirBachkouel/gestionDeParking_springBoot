@@ -1,8 +1,6 @@
-package Service;
+package Service.Interface;
 
 import Entity.User;
-
-import java.util.List;
 
 public interface IUserService {
     public User getUser(int id);
