@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Setter
@@ -25,4 +26,7 @@ public class User implements Serializable {
     @Enumerated(EnumType.STRING)
     private Role role;
     private String password;
+
+    @OneToMany(mappedBy = "parkingSpots")
+    private List<Reservation> reservations;
 }

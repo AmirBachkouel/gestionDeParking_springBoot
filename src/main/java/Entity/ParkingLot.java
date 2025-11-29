@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Setter
@@ -28,4 +29,7 @@ public class ParkingLot implements Serializable {
     private Date closingHour;
     @Enumerated(EnumType.STRING)
     private Status status;
+
+    @OneToMany(mappedBy = "parkingLot")
+    private List<ParkingSpot> parkingSpots;
 }

@@ -1,9 +1,6 @@
 package Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,4 +23,9 @@ public class Reservation implements Serializable {
     private float payedAmount;
     private Date startDate;
     private Date endDate;
+
+    @OneToOne(mappedBy = "reservation")
+    private ParkingSpot parkingSpot;
+    @ManyToOne
+    private User user;
 }
