@@ -1,11 +1,10 @@
 package Service.MethodParameters;
 
 import Entity.Role;
+import lombok.Getter;
 
+@Getter
 public class UserParameters {
-
-    public UserParameters () {}
-
     private int id;
     private String firstName;
     private String lastName;
@@ -14,22 +13,17 @@ public class UserParameters {
     private Role role;
     private String password;
 
-    public int getId() {
-        return id;
+    public UserParameters() {}
+    public UserParameters (String firstName, String lastName,Role role) {
+        this.firstName = firstName;
+        this.lastName  = lastName;
+        this.role      = role;
     }
-    public String getPassword() {
-        return password;
-    }
-    public Role getRole() {
-        return role;
-    }
-    public String getEmail() {
-        return email;
-    }
-    public String getLastName() {
-        return lastName;
-    }
-    public String getFirstName() {
-        return firstName;
+    public UserParameters (int id, String firstName, String lastName, String email, Role role) {
+        this.id        = id;
+        this.firstName = firstName;
+        this.lastName  = lastName;
+        this.email     = email;
+        this.role      = role;
     }
 }
