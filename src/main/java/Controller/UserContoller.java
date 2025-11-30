@@ -1,9 +1,13 @@
 package Controller;
 
+import Entity.Role;
 import Entity.User;
 import Service.Interface.IUserService;
+import Service.MethodParameters.UserParameters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/users/")
@@ -11,13 +15,11 @@ public class UserContoller {
     @Autowired
     IUserService userService;
 
-    @GetMapping("GetUser/{id}")
-    public User getUser(@PathVariable("id") int  id) {
-        return userService.getUser(id);
-    }
-    @GetMapping("GetUser/{criteria}")
-    public User getUser(@PathVariable("criteria") String criteria) {
-        return userService.getUser(criteria);
+    @GetMapping("GetUser/")
+    public List<User> getUsers(@RequestParam(value = "firsName", required = false) String firstName,
+                               @RequestParam(value = "lastName", required = false) String lastName,
+                               @RequestParam(value = "role", required = false) Role role) {
+        return userService.getUsers(new UserParameters(firstName, lastName, role));
     }
 
     @PostMapping("AddUser/")
@@ -28,9 +30,5 @@ public class UserContoller {
     @DeleteMapping("DeleteUser/{id}")
     public  void deleteUser(@PathVariable("id") int id) {
         userService.deleteUser(id);
-    }
-    @DeleteMapping("DeleteUser/{criteria}")
-    public  void deleteUser(@PathVariable("criteria") String  criteria) {
-        userService.deleteUser(criteria);
     }
 }
