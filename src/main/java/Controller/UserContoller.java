@@ -27,8 +27,8 @@ public class UserContoller {
         return userService.addUser(user);
     }
 
-    @DeleteMapping("DeleteUser/{id}")
-    public  void deleteUser(@PathVariable("id") int id) {
-        userService.deleteUser(id);
+    @DeleteMapping("DeleteUser/")
+    public  void deleteUser() {
+        userService.deleteUser(new UserParameters());
     }
 }
