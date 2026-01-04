@@ -16,7 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 public class User implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
 
     private String firstName;
@@ -27,6 +27,6 @@ public class User implements Serializable {
     private Role role;
     private String password;
 
-    @OneToMany(mappedBy = "parkingSpots")
+    @OneToMany(mappedBy = "user")
     private List<Reservation> reservations;
 }
