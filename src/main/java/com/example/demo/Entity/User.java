@@ -16,7 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 public class User implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private String firstName;
