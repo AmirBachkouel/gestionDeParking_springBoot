@@ -47,4 +47,16 @@ public class SecurityConfig {
         String secret = "k7Vh8s9J3Pq1F6x2Uo5mN8yR0vQ4zL1tXc7P9jE3rH2sW5yZ0bK6fD1nG4aQ8tV2";
         return new NimbusJwtEncoder(new ImmutableSecret<>(secret.getBytes(StandardCharsets.UTF_8)));
     }
+
+    @Bean
+    public JwtDecoder jwtDecoder() {
+        String secret = "k7Vh8s9J3Pq1F6x2Uo5mN8yR0vQ4zL1tXc7P9jE3rH2sW5yZ0bK6fD1nG4aQ8tV2";
+        SecretKeySpec keySpec = new SecretKeySpec(secret.getBytes(StandardCharsets.UTF_8), "HmacSHA512");
+        return NimbusJwtDecoder.withSecretKey(keySpec).macAlgorithm(MacAlgorithm.HS512).build();
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 }
