@@ -12,30 +12,32 @@ import java.util.List;
 @Service
 public class ParkingSpotServiceImpl implements IParkingSpotService {
     @Autowired
-    IParkingSpotRepository iParkingSpotRepository;
+    IParkingSpotRepository parkingSpotRepository;
 
     @Override
     public List<ParkingSpot> getParkingSpot(String sortField, String sortOrder) {
-        return List.of();
+
+        return (List<ParkingSpot>)parkingSpotRepository.findAll();
     }
 
     @Override
     public ParkingSpot getParkingSpot(int id, ParkingSpot parkingSpot) {
-        return null;
+
+        return parkingSpotRepository.findById(id).get();
     }
 
     @Override
     public void addParkingSpot(ParkingSpot parkingSpot) {
-
+        parkingSpotRepository.save(parkingSpot);
     }
 
     @Override
     public void updateParkingSpot(ParkingSpot parkingSpot) {
-
+        parkingSpotRepository.save(parkingSpot);
     }
 
     @Override
     public void deleteParkingSpot(int id) {
-
+        parkingSpotRepository.deleteById(id);
     }
 }

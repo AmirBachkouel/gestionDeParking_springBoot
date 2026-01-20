@@ -15,26 +15,28 @@ public class ReservationServiceImpl implements IReservationService {
 
     @Override
     public List<Reservation> getReservations(String sortField, String sortOrder) {
-        return List.of();
+
+        return (List<Reservation>)reservationRepository.findAll();
     }
 
     @Override
     public Reservation getReservation(int id, Reservation reservation) {
-        return null;
+
+        return reservationRepository.findById(id).get();
     }
 
     @Override
     public void addReservation(Reservation reservation) {
-
+        reservationRepository.save(reservation);
     }
 
     @Override
     public void updateReservation(Reservation reservation) {
-
+        reservationRepository.save(reservation);
     }
 
     @Override
     public void deleteReservation(int id) {
-
+        reservationRepository.deleteById(id);
     }
 }
